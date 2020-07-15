@@ -1,0 +1,136 @@
+/**
+ * Block list manager for Pi-hole (css/style.css).
+ *
+ * Contains interface styles.
+ */
+
+/* =============================================================
+ * Font Icons
+ * =============================================================
+ */
+.icon {
+    display: inline-flex !important;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =============================================================
+ * Resource Link
+ * =============================================================
+ */
+.resource {
+    color: #888;
+    margin-right: 10px;
+}
+
+.resource:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.resource:last-child {
+    margin-right: 0;
+}
+
+/* =============================================================
+ * Overview Stat Boxes
+ * =============================================================
+ */
+.stat-box {
+    position: relative;
+}
+
+.stat-box .stat-text {
+    position: relative;
+    z-index: 2;
+}
+
+.stat-box .stat-icon {
+    font-size: 110px;
+    color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 1;
+}
+
+/* =============================================================
+ * Table Styles
+ * =============================================================
+ */
+.table-box {
+    border: 1px solid #aaa;
+}
+
+.domains-list {
+    margin-bottom: 0;
+    word-break: break-all;
+}
+
+.domains-list thead th {
+    border-top-width: 0;
+    border-bottom-width: 1px;
+}
+
+.domains-list th.hits,
+.domains-list td.hits {
+    width: 80px;
+}
+
+.domains-list th.resources,
+.domains-list td.resources {
+    width: 130px;
+}
+
+.domains-list th.border-left,
+.domains-list td.border-left {
+    border-left: 1px solid #dee2e6;
+}
+
+/* =============================================================
+ * Center Content
+ * =============================================================
+ */
+.center-content {
+    align-items: center;
+    flex-direction: column;
+    padding: 100px 0;
+}
+
+.center-content .not-found {
+    font-size: 150px;
+    font-weight: 700;
+}
+
+.center-content .nothing-here {
+    text-align: center;
+}
+
+/* =============================================================
+ * Global Body
+ * =============================================================
+ */
+#global-body {
+    margin-top: 56px;
+}
+
+/* =============================================================
+ * File Editor
+ * =============================================================
+ */
+#file-contents {
+    font-family: "Lucida Console", Courier, monospace;
+    height: calc(100vh - 4rem - 250px);
+    padding: 15px;
+    border: 1px solid #aaa;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-box-shadow: inset 0 0 3px #aaa;
+    -webkit-box-shadow: inset 0 0 3px #aaa;
+    box-shadow: inset 0 0 3px #aaa;
+    resize: none;
+}
