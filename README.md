@@ -108,14 +108,14 @@ __NOTE:__ Accept and watch lists DO NOT need to be added into Pi-hole. They are 
 ## Explanation of Tables
 While Pi-hole is meant to cover all DNS requests of your network, you will often be working with very large tables (spanning up to a billion rows). This is to ensure that any network activity will be shown under the respective tables below.
 
-| Table             | Description                                | Display Conditions                                              |
-|-------------------|--------------------------------------------|-----------------------------------------------------------------|
-| Allowed Domains   | Shows domains passed through Pi-hole       | - Domain not in block or accept lists                           |
-| Blocked Domains   | Shows domains blocked by Pi-hole           | - Domain not in block lists                                     |
-| Watchlist Domains | Shows domains mentioned by the watch lists | - Domain not in block or accept lists<br>- Domain in watch list |
-| Stagnant Domains  | Shows domains never blocked by Pi-hole     | - Domain not blocked by Pi-hole                                 |
+| Table             | Description                                      | Display Conditions                                                      |
+|-------------------|--------------------------------------------------|-------------------------------------------------------------------------|
+| Allowed Domains   | Shows domains passed through Pi-hole             | - Domain not in BLM block or accept lists                               |
+| Blocked Domains   | Shows domains blocked by Pi-hole                 | - Domain not in BLM block lists                                         |
+| Watchlist Domains | Shows domains partially matching the watch lists | - Domain not in BLM block or accept lists<br>- Domain in BLM watch list |
+| Stagnant Domains  | Shows domains never blocked by Pi-hole           | - Domain not blocked by Pi-hole                                         |
 
-__NOTE:__ If Pi-hole becomes too large (to work in BLM), you can always reset the logs by going to Settings > __Flush logs__.
+__NOTE:__ If Pi-hole logs becomes too large to work in BLM, you can always reset them by going to Settings > __Flush logs__.
 
 ## Explanation of Lists
 While BLM and Pi-hole are different applications, BLM is designed to work with a simple domain list format instead of using the `hosts` file format. For example:
