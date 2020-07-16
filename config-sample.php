@@ -21,7 +21,7 @@ define( 'WEB_PASSWORD', '' );
  * @since 1.0.0
  */
 define( 'BLOCK_DIRECTORY', realpath( './lists/block' ) );
-define( 'BLOCK_LIST_FILES', [ 'my-list.list' ] );
+define( 'BLOCK_LIST_FILES', [ 'my-list.list', 'my-list.txt' ] );
 
 /**
  * Accept lists file location.

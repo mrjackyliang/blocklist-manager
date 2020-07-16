@@ -147,6 +147,10 @@ if ( is_logged_in() ) {
 								<span>My Pi-hole</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="nav-bar-pihole">
+								<a class="dropdown-item" href="http://192.168.10.100:3737/admin/settings.php" target="_blank">
+									<i class="icon fas fa-cogs" aria-hidden="true"></i>
+									<span class="ml-1">System Settings</span>
+								</a>
 								<a class="dropdown-item" href="<?php echo PI_HOLE_URL . '/admin/settings.php?tab=api' ?>" target="_blank">
 									<i class="icon fas fa-code" aria-hidden="true"></i>
 									<span class="ml-1">API Settings</span>

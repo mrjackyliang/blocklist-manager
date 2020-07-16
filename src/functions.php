@@ -10,7 +10,7 @@
  */
 function convert_to_nice_name( $file_name ) {
 	$chars     = str_replace( '--', '-&-', $file_name );
-	$words     = str_replace( [ '-', '.list' ], [ ' ', '' ], $chars );
+	$words     = str_replace( [ '-', '.list', '.txt' ], [ ' ', '', '' ], $chars );
 	$uppercase = ucwords( $words );
 	$grammar   = str_replace( [ 'Of', 'Or', 'And' ], [ 'of', 'or', 'and' ], $uppercase );
 
