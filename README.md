@@ -69,6 +69,7 @@ By default, BLM converts file names to nice names for display in the interface. 
 
 | Naming Type          | File Name                 | Nice Name          |
 |----------------------|---------------------------|--------------------|
+| Convert to words     | `cool-block-list.txt`     | Cool Block List    |
 | Convert to words     | `cool-block-list.list`    | Cool Block List    |
 | Convert to ampersand | `abc--def.list`           | Abc & Def          |
 | Lowercase "of"       | `internet-of-things.list` | Internet of Things |
@@ -78,11 +79,11 @@ By default, BLM converts file names to nice names for display in the interface. 
 #### Add Lists to Block List Manager
 When you create a new list, these lists must be configured for use in BLM. To add the file for use, open the `config.php` file, and then configure the appropriate settings:
 
-| List         | Setting             | Example                      | Type       |
-|--------------|---------------------|------------------------------|------------|
-| Block lists  | `BLOCK_LIST_FILES`  | `[ 'abc.list', 'def.list' ]` | `string[]` |
-| Accept lists | `ACCEPT_LIST_FILES` | `[ 'abc.list', 'def.list' ]` | `string[]` |
-| Watch lists  | `WATCH_LIST_FILES`  | `[ 'abc.list', 'def.list' ]` | `string[]` |
+| List         | Setting             | Example                     | Type       |
+|--------------|---------------------|-----------------------------|------------|
+| Block lists  | `BLOCK_LIST_FILES`  | `[ 'abc.list', 'def.txt' ]` | `string[]` |
+| Accept lists | `ACCEPT_LIST_FILES` | `[ 'abc.list', 'def.txt' ]` | `string[]` |
+| Watch lists  | `WATCH_LIST_FILES`  | `[ 'abc.list', 'def.txt' ]` | `string[]` |
 
 #### Cannot Read or Write Files
 If BLM is complaining that the file cannot be read or written, make sure the permissions and user ownership has been set correctly. Under an identical server configuration, you may use the commands below to correct these permission errors:
