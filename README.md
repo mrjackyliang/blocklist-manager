@@ -58,11 +58,11 @@ If you are setting up BLM on an existing server, chances are you may want to sto
 ## Creating List Files
 BLM does not come with block lists by default. For starters, add [StevenBlack's Hosts](https://github.com/StevenBlack/hosts) into Pi-hole. Then apply the experience towards your own lists with the instructions below:
 
-| List Type   | Directory        | Description                                   | File Extension |
-|-------------|------------------|-----------------------------------------------|----------------|
-| Block list  | `/lists/block/`  | Block list files are stored in this location  | `.list`        |
-| Accept list | `/lists/accept/` | Accept list files are stored in this location | `.list`        |
-| Watch list  | `/lists/watch/`  | Watch list files are stored in this location  | `.list`        |
+| List Type   | Directory        | Description                                   | Supported File Extensions |
+|-------------|------------------|-----------------------------------------------|---------------------------|
+| Block list  | `/lists/block/`  | Block list files are stored in this location  | `.list`, `.txt`           |
+| Accept list | `/lists/accept/` | Accept list files are stored in this location | `.list`, `.txt`           |
+| Watch list  | `/lists/watch/`  | Watch list files are stored in this location  | `.list`, `.txt`           |
 
 #### File Naming Conventions
 By default, BLM converts file names to nice names for display in the interface. If you would like more naming conventions, feel free to [open an issue](https://github.com/mrjackyliang/blocklist-manager/issues/new/choose) on GitHub! Examples are:
@@ -105,7 +105,7 @@ Once the block lists have been created, add them to Pi-hole:
 
 __NOTE:__ Accept and watch lists DO NOT need to be added into Pi-hole. They are meant for use with BLM to help you build better block lists.
 
-## Explanation of Tables
+## Table Usages
 While Pi-hole is meant to cover all DNS requests of your network, you will often be working with very large tables (spanning up to a billion rows). This is to ensure that any network activity will be shown under the respective tables below.
 
 | Table             | Description                                      | Display Conditions                                                                                |
@@ -113,12 +113,12 @@ While Pi-hole is meant to cover all DNS requests of your network, you will often
 | Allowed Domains   | Shows domains passed through Pi-hole             | - Domain not in BLM block lists<br>- Domain not in BLM accept lists                               |
 | Blocked Domains   | Shows domains blocked by Pi-hole                 | - Domain not in BLM block lists                                                                   |
 | Watchlist Domains | Shows domains partially matching the watch lists | - Domain not in BLM block lists<br>- Domain not in BLM accept lists<br>- Domain in BLM watch list |
-| Stagnant Domains  | Shows domains never blocked by Pi-hole           | - Domain not blocked by Pi-hole                                                                   |
+| Stagnant Domains  | Shows domains never blocked by Pi-hole           | - Domain not shown in Blocked Domains table                                                       |
 
-__NOTE:__ If Pi-hole logs becomes too large to work in BLM, you can always reset them by going to Settings > __Flush logs__.
+__NOTE:__ If Pi-hole logs becomes too large to work, you can always reset them by going to My Pi-hole > System Settings > __Flush logs__.
 
-## Explanation of Lists
-While BLM and Pi-hole are different applications, BLM is designed to work with a simple domain list format instead of using the `hosts` file format. For example:
+## Lists Formatting
+While BLM and Pi-hole are different applications, BLM is designed to work with a simple domain list format instead of using the [hosts file](https://en.wikipedia.org/wiki/Hosts_(file)) format. For example:
 
 ```text
 # Company 1
@@ -138,10 +138,10 @@ company-d.com
 #### Wildcard domain support
 When creating block lists, it is crucial to know that block lists have a strict match. This is a Pi-hole Gravity list limitation.
 
-| List         | Partial Domain Support | Does `example.com` match `www.example.com`? | Does `ad` match `ad.com`? |
-|--------------|------------------------|---------------------------------------------|---------------------------|
-| Block lists  | No                     | No                                          | No                        |
-| Accept lists | Yes                    | Yes                                         | Yes                       |
-| Watch lists  | Yes                    | Yes                                         | Yes                       |
+| List         | Partial Domain Support | Does `example.com` match `www.example.com`? | Does `www.example.com` match `example.com`? | Does `ad` match `ad.com`? |
+|--------------|------------------------|---------------------------------------------|---------------------------------------------|---------------------------|
+| Block lists  | No                     | No                                          | No                                          | No                        |
+| Accept lists | Yes                    | Yes                                         | No                                          | Yes                       |
+| Watch lists  | Yes                    | Yes                                         | No                                          | Yes                       |
 
 __NOTE:__ With great power comes with great responsibility. By design, watch lists should have a lossy format (to detect domains), and accept lists should have a strict format (to hide domains).
