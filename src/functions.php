@@ -40,6 +40,26 @@ function filter_invalid_lines( $domains ) {
 }
 
 /**
+ * Get domain from url.
+ *
+ * @param $url - The url to convert.
+ *
+ * @return bool|string
+ *
+ * @since 1.0.0
+ */
+function get_domain( $url ) {
+	$pieces = parse_url( $url );
+
+	$domain = isset( $pieces[ 'host' ] ) ? $pieces[ 'host' ] : '';
+	if ( preg_match( '/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs ) ) {
+		return $regs[ 'domain' ];
+	}
+
+	return false;
+}
+
+/**
  * Get file type directory.
  *
  * @param string $type - Type of directory.
@@ -104,15 +124,28 @@ function get_path() {
  * @since 1.0.0
  */
 function get_link_resources( $domain ) {
-	$output        = '';
-	$domain_pieces = explode( '.', $domain );
-	$domain_ext    = end( $domain_pieces );
-	$domain_root   = prev( $domain_pieces ) . '.' . $domain_ext;
+	$output = '';
 
-	$links[] = [ 'Search &quot;' . $domain . '&quot; in Google', 'fa-search', 'https://www.google.com/search?q=%22' . $domain . '%22' ];
-	$links[] = [ 'WHOIS Information for ' . $domain_root, 'fa-user-secret', 'https://www.whois.com/whois/' . $domain_root ];
-	$links[] = [ 'Google Dig Tool', 'fa-toolbox', 'https://toolbox.googleapps.com/apps/dig/' ];
-	$links[] = [ 'IP Address Lookup', 'fa-globe-americas', 'https://whatismyipaddress.com/ip-lookup/' ];
+	$links[] = [
+		'Search &quot;' . $domain . '&quot; in Google',
+		'fa-search',
+		'https://www.google.com/search?q=%22' . $domain . '%22'
+	];
+	$links[] = [
+		'WHOIS Information for ' . get_domain( '//' . $domain ),
+		'fa-user-secret',
+		'https://www.whois.com/whois/' . get_domain( '//' . $domain )
+	];
+	$links[] = [
+		'Security Trails',
+		'fa-shield-alt',
+		'https://securitytrails.com/domain/' . $domain . '/dns'
+	];
+	$links[] = [
+		'IP Address Lookup',
+		'fa-globe-americas',
+		'https://whatismyipaddress.com/ip-lookup/'
+	];
 
 	foreach ( $links as $link ) {
 		$output .= '<a href="' . $link[ 2 ] . '" class="resource" title="' . $link[ 0 ] . '" target="_blank"><i class="icon fas ' . $link[ 1 ] . '" aria-hidden="true"></i></a>';
