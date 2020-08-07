@@ -5,7 +5,6 @@ Block List Manager for Pi-hole
 [![GitHub Top Languages](https://img.shields.io/github/languages/top/mrjackyliang/blocklist-manager?style=flat-square&color=success)](https://github.com/mrjackyliang/blocklist-manager)
 [![GitHub License](https://img.shields.io/github/license/mrjackyliang/blocklist-manager?style=flat-square&color=yellow)](https://github.com/mrjackyliang/blocklist-manager/blob/master/LICENSE)
 [![Become a GitHub Sponsor](https://img.shields.io/badge/sponsor-github-black?style=flat-square&color=orange)](https://github.com/sponsors/mrjackyliang)
-[![Become a Patreon](https://img.shields.io/badge/donate-patreon-orange?style=flat-square&color=red)](https://www.patreon.com/mrjackyliang)
 
 This is a network management tool to help you build better block lists. Custom block lists created with Block List Manager have been designed for use with [Pi-hole](https://github.com/pi-hole/pi-hole). Works on any LAMP server with support for `.htaccess` configuration.
 
